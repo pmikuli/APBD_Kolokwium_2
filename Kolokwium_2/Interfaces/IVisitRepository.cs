@@ -4,5 +4,5 @@ namespace Kolokwium_2.Interfaces;
 
 public interface IVisitRepository
 {
-    Task AddVisit(AddVisitDTO dto);
+    Task<int> AddVisit(AddVisitDTO dto);
 }

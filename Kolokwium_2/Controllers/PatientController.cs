@@ -23,9 +23,9 @@ public class PatientController : ControllerBase
             var result = await _patientRepository.getPatient(idPatient);
             return Ok(result);
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            return NotFound(e);
+            return NotFound();
         }
     }
     

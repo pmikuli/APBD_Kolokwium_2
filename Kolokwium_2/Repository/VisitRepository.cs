@@ -14,7 +14,7 @@ public class VisitRepository : IVisitRepository
         _context = context;
     }
     
-    public async Task AddVisit(AddVisitDTO dto)
+    public async Task<int> AddVisit(AddVisitDTO dto)
     {
         // _context.Visits.Add().
         var doctor = await _context.Doctors
@@ -58,6 +58,6 @@ public class VisitRepository : IVisitRepository
             visit.Price = doctor.PriceForVisit;
 
         await _context.Visits.AddAsync(visit);
-        await _context.SaveChangesAsync();
+        return await _context.SaveChangesAsync();
     }
 }

@@ -16,9 +16,16 @@ public class VisitController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<IActionResult> addVisit([FromBody] AddVisitDTO dto)
+    public async Task<IActionResult> AddVisit([FromBody] AddVisitDTO dto)
     {
-        await _visitRepository.AddVisit(dto);
-        return Ok();
+        try
+        {
+            var id = await _visitRepository.AddVisit(dto);
+            return Ok(id);
+        }
+        catch (Exception)
+        {
+            return BadRequest();
+        }
     }
 }
